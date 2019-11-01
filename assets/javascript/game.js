@@ -64,10 +64,18 @@ console.log(lettersInCharacter);
 document.addEventListener(
   "keydown",
   function(event) {
-    if (lettersInCharacter.includes(event["key"])) {
+    if (
+      lettersInCharacter.includes(event["key"]) &&
+      lettersGuessedCorrect.includes(event["key"]) === false
+    ) {
+      // NOTE BUG!!== If double letters in name, can't win. Only does first letter
       lettersGuessedCorrect += event["key"];
       var elementID = "letter-" + lettersInCharacter.indexOf(event["key"]);
       document.getElementById(elementID).innerHTML = event["key"];
+      // Insert code that checks to see if the two arrays are equal
+      if (lettersGuessedCorrect.length === lettersInCharacter.length) {
+        console.log("game over");
+      }
     } else if (lettersGuessed.includes(event["key"]) === false) {
       lettersGuessed.push(event["key"]);
       console.log(lettersGuessed);
