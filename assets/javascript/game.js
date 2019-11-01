@@ -66,12 +66,12 @@ document.addEventListener(
   function(event) {
     if (lettersInCharacter.includes(event["key"])) {
       lettersGuessedCorrect += event["key"];
-
-      var elementID = "letter-" + lettersGuessedCorrect.indexOf(event["key"]);
+      var elementID = "letter-" + lettersInCharacter.indexOf(event["key"]);
       document.getElementById(elementID).innerHTML = event["key"];
     } else if (lettersGuessed.includes(event["key"]) === false) {
-      lettersGuessed += event["key"];
+      lettersGuessed.push(event["key"]);
       console.log(lettersGuessed);
+      remainingGuesses--;
     }
   },
   false
