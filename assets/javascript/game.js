@@ -54,15 +54,24 @@ var lettersInCharacter = randomCharacterName.split("");
 for (i = 0; i < lettersInCharacter.length; i++) {
   document.getElementById("guessing-holder").innerHTML =
     document.getElementById("guessing-holder").innerHTML +
-    "<span class = 'px-1'>_</span>";
+    "<span class = 'px-1' id = 'letter-" +
+    i +
+    "'>_</span>";
 }
+
+console.log(lettersInCharacter);
 
 document.addEventListener(
   "keydown",
   function(event) {
     if (lettersInCharacter.includes(event["key"])) {
-      console.log(event["key"]);
       lettersGuessedCorrect += event["key"];
+
+      var elementID = "letter-" + lettersGuessedCorrect.indexOf(event["key"]);
+      document.getElementById(elementID).innerHTML = event["key"];
+    } else if (lettersGuessed.includes(event["key"]) === false) {
+      lettersGuessed += event["key"];
+      console.log(lettersGuessed);
     }
   },
   false
