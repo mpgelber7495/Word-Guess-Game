@@ -46,13 +46,24 @@ characters = [
 var wins = 0;
 var remainingGuesses = 8;
 var lettersGuessed = [];
+var lettersGuessedCorrect = [];
 var randomCharacter = characters[Math.floor(Math.random() * characters.length)];
-
-var lettersInCharacter = randomCharacter["name"].split("");
-console.log(lettersInCharacter);
+var randomCharacterName = randomCharacter["name"].toLowerCase();
+var lettersInCharacter = randomCharacterName.split("");
 
 for (i = 0; i < lettersInCharacter.length; i++) {
   document.getElementById("guessing-holder").innerHTML =
     document.getElementById("guessing-holder").innerHTML +
-    "<span class = 'letter-holder'> &nbsp;</span>";
+    "<span class = 'px-1'>_</span>";
 }
+
+document.addEventListener(
+  "keydown",
+  function(event) {
+    if (lettersInCharacter.includes(event["key"])) {
+      console.log(event["key"]);
+      lettersGuessedCorrect += event["key"];
+    }
+  },
+  false
+);
