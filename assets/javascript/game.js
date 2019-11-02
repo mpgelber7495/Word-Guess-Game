@@ -51,6 +51,8 @@ var randomCharacter = characters[Math.floor(Math.random() * characters.length)];
 var randomCharacterName = randomCharacter["name"].toLowerCase();
 var lettersInCharacter = randomCharacterName.split("");
 
+document.getElementById("remaining-guesses").innerHTML = remainingGuesses;
+
 for (i = 0; i < lettersInCharacter.length; i++) {
   document.getElementById("guessing-holder").innerHTML =
     document.getElementById("guessing-holder").innerHTML +
@@ -61,26 +63,30 @@ for (i = 0; i < lettersInCharacter.length; i++) {
 
 console.log(lettersInCharacter);
 
-document.addEventListener(
-  "keydown",
-  function(event) {
-    if (
-      lettersInCharacter.includes(event["key"]) &&
-      lettersGuessedCorrect.includes(event["key"]) === false
-    ) {
-      // NOTE BUG!!== If double letters in name, can't win. Only does first letter
+document.addEventListener("keydown", function(event) {
+  for (i = 0; i < lettersInCharacter.length; i++) {
+    if (lettersInCharacter[i] === event["key"]) {
       lettersGuessedCorrect += event["key"];
-      var elementID = "letter-" + lettersInCharacter.indexOf(event["key"]);
+      var elementID = "letter-" + i;
       document.getElementById(elementID).innerHTML = event["key"];
-      // Insert code that checks to see if the two arrays are equal
       if (lettersGuessedCorrect.length === lettersInCharacter.length) {
-        console.log("game over");
+        wins++;
+        document.getElementById("wins").innerHTML = wins;
       }
-    } else if (lettersGuessed.includes(event["key"]) === false) {
-      lettersGuessed.push(event["key"]);
-      console.log(lettersGuessed);
-      remainingGuesses--;
     }
-  },
-  false
-);
+  }
+
+  if (
+    lettersGuessed.includes(event["key"]) === false &&
+    lettersInCharacter.includes(event["key"]) === false
+  ) {
+    lettersGuessed.push(event["key"]);
+    document.getElementById("letters-guessed").innerHTML = lettersGuessed;
+    remainingGuesses--;
+  }
+});
+// } if (lettersGuessed.includes(event["key"]) === false) {
+//   lettersGuessed.push(event["key"]);
+//   console.log(lettersGuessed);
+//   remainingGuesses--;
+// }
