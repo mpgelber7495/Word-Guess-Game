@@ -2,8 +2,7 @@
 characters = [
   {
     name: "99 Red Balloons",
-    artist: "Gold Finger",
-    albumArt: 
+    Description: "Gold Finger"
   },
   {
     name: "My Own Worst Enemy",
@@ -46,12 +45,12 @@ characters = [
 
 var wins = 0;
 var losses = 0;
-var remainingGuesses;
-var lettersGuessed;
-var lettersGuessedCorrect;
-var randomCharacter;
-var randomCharacterName;
-var lettersInCharacter;
+// var remainingGuesses;
+// var lettersGuessed;
+// var lettersGuessedCorrect;
+// var randomCharacter;
+// var randomCharacterName;
+// var lettersInCharacter;
 
 function instantiateVariables() {
   remainingGuesses = 8;
