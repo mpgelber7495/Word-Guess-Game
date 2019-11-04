@@ -2,8 +2,7 @@
 characters = [
   {
     name: "99 Red Balloons",
-    artist: "Gold Finger",
-    albumArt: 
+    Description: "Gold Finger"
   },
   {
     name: "My Own Worst Enemy",
@@ -80,12 +79,14 @@ var lettersInCharacter = instant[5];
 
 document.getElementById("remaining-guesses").innerHTML = remainingGuesses;
 
-for (i = 0; i < lettersInCharacter.length; i++) {
-  document.getElementById("guessing-holder").innerHTML =
-    document.getElementById("guessing-holder").innerHTML +
-    "<span class = 'px-1' id = 'letter-" +
-    i +
-    "'>_</span>";
+function resetCharacter() {
+  for (i = 0; i < lettersInCharacter.length; i++) {
+    document.getElementById("guessing-holder").innerHTML =
+      document.getElementById("guessing-holder").innerHTML +
+      "<span class = 'px-1' id = 'letter-" +
+      i +
+      "'>_</span>";
+  }
 }
 
 document.addEventListener("keydown", function(event) {
@@ -119,13 +120,13 @@ document.addEventListener("keydown", function(event) {
     if (remainingGuesses === 0) {
       losses++;
       document.getElementById("losses").innerHTML = losses;
-      var instant = instantiateVariables();
-      var remainingGuesses = instant[0];
-      var lettersGuessed = instant[1];
-      var lettersGuessedCorrect = instant[2];
-      var randomCharacter = instant[3];
-      var randomCharacterName = instant[4];
-      var lettersInCharacter = instant[5];
+      instant = instantiateVariables();
+      remainingGuesses = instant[0];
+      lettersGuessed = instant[1];
+      lettersGuessedCorrect = instant[2];
+      randomCharacter = instant[3];
+      randomCharacterName = instant[4];
+      lettersInCharacter = instant[5];
     }
   }
 });
