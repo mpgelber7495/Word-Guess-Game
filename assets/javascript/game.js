@@ -43,6 +43,37 @@ characters = [
 ];
 // End data
 
+//Array of valid keys to press
+validKeys = [
+  "q",
+  "w",
+  "e",
+  "r",
+  "t",
+  "y",
+  "u",
+  "i",
+  "o",
+  "p",
+  "a",
+  "s",
+  "d",
+  "f",
+  "g",
+  "h",
+  "j",
+  "k",
+  "l",
+  "z",
+  "x",
+  "c",
+  "v",
+  "b",
+  "n",
+  "m",
+  " "
+];
+
 var wins = 0;
 var losses = 0;
 var remainingGuesses;
@@ -80,6 +111,7 @@ var lettersInCharacter = instant[5];
 document.getElementById("remaining-guesses").innerHTML = remainingGuesses;
 
 function resetCharacter() {
+  document.getElementById("guessing-holder").innerHTML = "";
   for (i = 0; i < lettersInCharacter.length; i++) {
     document.getElementById("guessing-holder").innerHTML =
       document.getElementById("guessing-holder").innerHTML +
@@ -89,9 +121,14 @@ function resetCharacter() {
   }
 }
 
+resetCharacter();
+
 document.addEventListener("keydown", function(event) {
   for (i = 0; i < lettersInCharacter.length; i++) {
-    if (lettersInCharacter[i] === event["key"]) {
+    if (
+      lettersInCharacter[i] === event["key"] &&
+      validKeys.includes(event["key"])
+    ) {
       lettersGuessedCorrect += event["key"];
       var elementID = "letter-" + i;
       document.getElementById(elementID).innerHTML = event["key"];
@@ -105,13 +142,15 @@ document.addEventListener("keydown", function(event) {
         randomCharacter = instant[3];
         randomCharacterName = instant[4];
         lettersInCharacter = instant[5];
+        resetCharacter();
       }
     }
   }
 
   if (
     lettersGuessed.includes(event["key"]) === false &&
-    lettersInCharacter.includes(event["key"]) === false
+    lettersInCharacter.includes(event["key"]) === false &&
+    validKeys.includes(event["key"])
   ) {
     lettersGuessed.push(event["key"]);
     document.getElementById("letters-guessed").innerHTML = lettersGuessed;
@@ -127,6 +166,7 @@ document.addEventListener("keydown", function(event) {
       randomCharacter = instant[3];
       randomCharacterName = instant[4];
       lettersInCharacter = instant[5];
+      resetCharacter();
     }
   }
 });
