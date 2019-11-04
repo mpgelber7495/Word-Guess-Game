@@ -1,27 +1,28 @@
 // JSON structure for the data below
 characters = [
   {
-    name: "Jim",
-    Description: "Floppy Hair"
+    name: "99 Red Balloons",
+    artist: "Gold Finger",
+    albumArt: 
   },
   {
-    name: "Angela",
+    name: "My Own Worst Enemy",
     Description: "Kitty Kitty"
   },
   {
-    name: "Stanely",
+    name: "I Want You Back",
     Description: "Definitely sassy"
   },
   {
-    name: "Dwight",
+    name: "Whats My Age Again",
     Description: "BSG, Mose"
   },
   {
-    name: "Pamela",
+    name: "Sweet Home Alabama",
     Description: "Art"
   },
   {
-    name: "Kevin",
+    name: "Basket Case",
     Description: "Really great with numbers"
   },
   {
@@ -44,12 +45,38 @@ characters = [
 // End data
 
 var wins = 0;
-var remainingGuesses = 8;
-var lettersGuessed = [];
-var lettersGuessedCorrect = [];
-var randomCharacter = characters[Math.floor(Math.random() * characters.length)];
-var randomCharacterName = randomCharacter["name"].toLowerCase();
-var lettersInCharacter = randomCharacterName.split("");
+var losses = 0;
+var remainingGuesses;
+var lettersGuessed;
+var lettersGuessedCorrect;
+var randomCharacter;
+var randomCharacterName;
+var lettersInCharacter;
+
+function instantiateVariables() {
+  remainingGuesses = 8;
+  lettersGuessed = [];
+  lettersGuessedCorrect = [];
+  randomCharacter = characters[Math.floor(Math.random() * characters.length)];
+  randomCharacterName = randomCharacter["name"].toLowerCase();
+  lettersInCharacter = randomCharacterName.split("");
+  return [
+    remainingGuesses,
+    lettersGuessed,
+    lettersGuessedCorrect,
+    randomCharacter,
+    randomCharacterName,
+    lettersInCharacter
+  ];
+}
+
+var instant = instantiateVariables();
+var remainingGuesses = instant[0];
+var lettersGuessed = instant[1];
+var lettersGuessedCorrect = instant[2];
+var randomCharacter = instant[3];
+var randomCharacterName = instant[4];
+var lettersInCharacter = instant[5];
 
 document.getElementById("remaining-guesses").innerHTML = remainingGuesses;
 
@@ -61,8 +88,6 @@ for (i = 0; i < lettersInCharacter.length; i++) {
     "'>_</span>";
 }
 
-console.log(lettersInCharacter);
-
 document.addEventListener("keydown", function(event) {
   for (i = 0; i < lettersInCharacter.length; i++) {
     if (lettersInCharacter[i] === event["key"]) {
@@ -72,6 +97,13 @@ document.addEventListener("keydown", function(event) {
       if (lettersGuessedCorrect.length === lettersInCharacter.length) {
         wins++;
         document.getElementById("wins").innerHTML = wins;
+        instant = instantiateVariables();
+        remainingGuesses = instant[0];
+        lettersGuessed = instant[1];
+        lettersGuessedCorrect = instant[2];
+        randomCharacter = instant[3];
+        randomCharacterName = instant[4];
+        lettersInCharacter = instant[5];
       }
     }
   }
@@ -83,10 +115,17 @@ document.addEventListener("keydown", function(event) {
     lettersGuessed.push(event["key"]);
     document.getElementById("letters-guessed").innerHTML = lettersGuessed;
     remainingGuesses--;
+    document.getElementById("remaining-guesses").innerHTML = remainingGuesses;
+    if (remainingGuesses === 0) {
+      losses++;
+      document.getElementById("losses").innerHTML = losses;
+      var instant = instantiateVariables();
+      var remainingGuesses = instant[0];
+      var lettersGuessed = instant[1];
+      var lettersGuessedCorrect = instant[2];
+      var randomCharacter = instant[3];
+      var randomCharacterName = instant[4];
+      var lettersInCharacter = instant[5];
+    }
   }
 });
-// } if (lettersGuessed.includes(event["key"]) === false) {
-//   lettersGuessed.push(event["key"]);
-//   console.log(lettersGuessed);
-//   remainingGuesses--;
-// }
