@@ -103,6 +103,23 @@ function resetCharacter() {
   }
 }
 
+// Function to display the next button and listen for it's click
+function nextButtonDisplay() {
+  document.getElementById("next-button").style.display = "inline";
+}
+
+nextButton = document.getElementById("next-button");
+
+nextButton.addEventListener("click", function() {
+  instant = instantiateVariables();
+  remainingGuesses = instant[0];
+  lettersGuessed = instant[1];
+  lettersGuessedCorrect = instant[2];
+  randomCharacter = instant[3];
+  randomCharacterName = instant[4];
+  lettersInCharacter = instant[5];
+  lettersGuessedCorrectCount = instant[6];
+});
 // First reset function to start off the game
 resetCharacter();
 
@@ -115,7 +132,6 @@ document.addEventListener("keydown", function(event) {
       validKeys.includes(event["key"]) &&
       lettersGuessedCorrect.includes(event["key"]) === false
     ) {
-      console.log(event["key"]);
       // inserting the correctly guessed letter into the DOM
       var elementID = "letter-" + i;
       document.getElementById(elementID).innerHTML = event["key"];
@@ -139,17 +155,10 @@ document.addEventListener("keydown", function(event) {
       randomCharacter.link +
       '" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe> </div></div>';
     document.getElementById("spotify-holder").innerHTML += songIframe;
-
+    nextButtonDisplay();
     // Reset all of the relevant variables for a new round
     document.getElementById("wins").innerHTML = wins;
-    instant = instantiateVariables();
-    remainingGuesses = instant[0];
-    lettersGuessed = instant[1];
-    lettersGuessedCorrect = instant[2];
-    randomCharacter = instant[3];
-    randomCharacterName = instant[4];
-    lettersInCharacter = instant[5];
-    lettersGuessedCorrectCount = instant[6];
+    // YER;
     resetCharacter();
   }
   // If a letter is guessed incorrect
@@ -168,15 +177,9 @@ document.addEventListener("keydown", function(event) {
     // cause loss of game if the remaining guesses are zero
     if (remainingGuesses === 0) {
       losses++;
+      nextButtonDisplay();
       document.getElementById("losses").innerHTML = losses;
-      instant = instantiateVariables();
-      remainingGuesses = instant[0];
-      lettersGuessed = instant[1];
-      lettersGuessedCorrect = instant[2];
-      randomCharacter = instant[3];
-      randomCharacterName = instant[4];
-      lettersInCharacter = instant[5];
-      lettersGuessedCorrectCount = instant[6];
+      // YER;
       resetCharacter();
     }
   }

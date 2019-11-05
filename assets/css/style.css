@@ -1,5 +1,4 @@
 body {
-  z-index: -1;
 }
 
 .page-heading {
@@ -16,12 +15,11 @@ h1.heading-text {
   transform: rotate(25deg);
   position: relative;
   opacity: 0.3;
-  z-index: -1;
 }
 
 .main-container {
   background-image: linear-gradient(gray, black);
-  z-index: -2;
+
   position: relative;
 }
 
@@ -49,12 +47,13 @@ h1.heading-text {
 #next-button {
   border: 1px dotted gray;
   color: firebrick;
-  /* display: none; */
+  display: none;
   font-size: 30px;
   text-align: center;
   text-decoration: none;
   font-size: 16px;
   z-index: 3;
+  position: relative;
 }
 
 #next-button:hover {
