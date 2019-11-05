@@ -108,9 +108,7 @@ function nextButtonDisplay() {
   document.getElementById("next-button").style.display = "inline";
 }
 
-nextButton = document.getElementById("next-button");
-
-nextButton.addEventListener("click", function() {
+function nextButtonRefresh() {
   instant = instantiateVariables();
   remainingGuesses = instant[0];
   lettersGuessed = instant[1];
@@ -119,7 +117,10 @@ nextButton.addEventListener("click", function() {
   randomCharacterName = instant[4];
   lettersInCharacter = instant[5];
   lettersGuessedCorrectCount = instant[6];
-});
+  document.getElementById("next-button").style.display = "none";
+  resetCharacter();
+}
+
 // First reset function to start off the game
 resetCharacter();
 
@@ -158,8 +159,7 @@ document.addEventListener("keydown", function(event) {
     nextButtonDisplay();
     // Reset all of the relevant variables for a new round
     document.getElementById("wins").innerHTML = wins;
-    // YER;
-    resetCharacter();
+    // resetCharacter();
   }
   // If a letter is guessed incorrect
   if (
@@ -179,8 +179,7 @@ document.addEventListener("keydown", function(event) {
       losses++;
       nextButtonDisplay();
       document.getElementById("losses").innerHTML = losses;
-      // YER;
-      resetCharacter();
+      // resetCharacter();
     }
   }
 });
