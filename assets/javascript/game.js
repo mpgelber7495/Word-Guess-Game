@@ -118,9 +118,17 @@ function resetCharacter() {
   }
 }
 
+// Function to sleep that will be used for animating the image spin
+
 // Function to display the next button and listen for it's click
 function nextButtonDisplay() {
   document.getElementById("next-button").style.display = "inline";
+  // Code for fun image spinning!
+  // bumperStickerImage = document.getElementById("bumper-sticker");
+  // for (k = 0; k < 18; k++) {
+  //   bumperStickerImage.style.transform = "rotate(" + k * 20 + "deg)";
+  //   sleep(1000);
+  // }
 }
 
 function nextButtonRefresh() {
