@@ -2,23 +2,38 @@
 characters = [
   {
     name: "Red Balloons",
-    Description: "Gold Finger",
+    artist: "Gold Finger",
     link: "https://open.spotify.com/embed/track/0rOTMSSa6yscfOrGnzfheM"
   },
   {
     name: "My Own Worst Enemy",
-    Description: "Kitty Kitty",
+    artist: "Lit",
     link: "https://open.spotify.com/embed/track/33iv3wnGMrrDugd7GBso1z"
   },
   {
     name: "Mr Brightside",
-    Description: "Kitty Kitty",
+    artist: "The Killers",
     link: "https://open.spotify.com/embed/track/7oK9VyNzrYvRFo7nQEYkWN"
   },
   {
     name: "All The Small Things",
-    Description: "Kitty Kitty",
+    artist: "Blink 182",
     link: "https://open.spotify.com/embed/track/2m1hi0nfMR9vdGC8UcrnwU"
+  },
+  {
+    name: "Basket Case",
+    artist: "Green Day",
+    link: "https://open.spotify.com/embed/track/6L89mwZXSOwYl76YXfX13s"
+  },
+  {
+    name: "American Girl",
+    artist: "Tom Petty",
+    link: "https://open.spotify.com/embed/track/7MRyJPksH3G2cXHN8UKYzP"
+  },
+  {
+    name: "The Middle",
+    artist: "Jimmy Eat World",
+    link: "https://open.spotify.com/embed/track/3mcG2NI5G5vhrQtRda1YnA"
   }
 ];
 // End data
@@ -157,9 +172,8 @@ document.addEventListener("keydown", function(event) {
       '" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe> </div></div>';
     document.getElementById("spotify-holder").innerHTML += songIframe;
     nextButtonDisplay();
-    // Reset all of the relevant variables for a new round
+    // display the new wins value
     document.getElementById("wins").innerHTML = wins;
-    // resetCharacter();
   }
   // If a letter is guessed incorrect
   if (
@@ -179,7 +193,6 @@ document.addEventListener("keydown", function(event) {
       losses++;
       nextButtonDisplay();
       document.getElementById("losses").innerHTML = losses;
-      // resetCharacter();
     }
   }
 });
