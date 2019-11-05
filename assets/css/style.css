@@ -1,7 +1,65 @@
+body {
+  z-index: -1;
+}
+
 .page-heading {
   border-bottom: 4px solid coral;
-  font-family: cursive;
+  font-family: "Cedarville Cursive", cursive;
+  background-color: firebrick;
 }
 h1.heading-text {
   font-weight: 900;
+  font-size: 50px;
+}
+
+.bumper-sticker {
+  transform: rotate(25deg);
+  position: relative;
+  opacity: 0.3;
+  z-index: -1;
+}
+
+.main-container {
+  background-image: linear-gradient(gray, black);
+  z-index: -2;
+  position: relative;
+}
+
+.score-board-heading {
+  font-size: 40px;
+  color: aliceblue;
+  border-bottom: 2px solid aliceblue;
+}
+
+.score-board {
+  color: aliceblue;
+  font-family: cursive;
+  font-size: 20px;
+}
+
+#letters-guessed {
+}
+
+#guessing-holder {
+  font-size: 30px;
+  color: aqua;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+
+#next-button {
+  border: 1px dotted gray;
+  color: firebrick;
+  /* display: none; */
+  font-size: 30px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  z-index: 3;
+}
+
+#next-button:hover {
+  background-color: aqua;
+}
+#next-button:active {
+  background-color: green;
 }

@@ -14,23 +14,61 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Cedarville+Cursive&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <header>
-      <div class="row  bg-dark text-light page-heading">
+      <div class="row py-2 text-light page-heading">
         <h1 class="col-12 d-flex justify-content-center heading-text">
           Guess that TYSO song
         </h1>
       </div>
     </header>
-    <ul>
-      <li>Wins: <span id="wins">0</span></li>
-      <li>Losses: <span id="losses">0</span></li>
-      <li>Remaining Guesses: <span id="remaining-guesses"></span></li>
-      <li>Letters Guessed: <span id="letters-guessed"></span></li>
-    </ul>
-    <div id="guessing-holder"></div>
+    <div class="container main-container my-3">
+      <div class="row">
+        <div class="col-12 d-flex justify-content-center my-5">
+          <img
+            class="w-50 my-3 bumper-sticker"
+            src="./assets/images/bumper-sticker.jpg"
+            alt=""
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 d-flex justify-content-center">
+          <h5 class="score-board-heading">Score Board</h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 d-flex justify-content-center">
+          <ul class="score-board">
+            <li>Wins: <span id="wins">0</span></li>
+            <li>Losses: <span id="losses">0</span></li>
+            <li>Remaining Guesses: <span id="remaining-guesses"></span></li>
+            <li>
+              Letters Guessed:
+              <span id="letters-guessed"></span>
+            </li>
+          </ul>
+        </div>
+      </div>
 
+      <div class="row">
+        <div class="col-12 d-flex justify-content-center my-3">
+          <div id="guessing-holder"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 d-flex justify-content-center py-2">
+          <button id="next-button">Next Guess!!</button>
+        </div>
+      </div>
+      <div id="spotify-holder"></div>
+    </div>
     <script type="text/javascript" src="./assets/javascript/game.js"></script>
   </body>
 </html>
