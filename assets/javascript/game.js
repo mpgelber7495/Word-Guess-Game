@@ -38,37 +38,6 @@ characters = [
 ];
 // End data
 
-//Array of valid keys to press
-validKeys = [
-  "q",
-  "w",
-  "e",
-  "r",
-  "t",
-  "y",
-  "u",
-  "i",
-  "o",
-  "p",
-  "a",
-  "s",
-  "d",
-  "f",
-  "g",
-  "h",
-  "j",
-  "k",
-  "l",
-  "z",
-  "x",
-  "c",
-  "v",
-  "b",
-  "n",
-  "m",
-  " "
-];
-
 // create variables
 var wins = 0;
 var losses = 0;
@@ -119,24 +88,11 @@ function resetCharacter() {
 }
 
 // Function to sleep that will be used for animating the image spin
-// function sleep(milliseconds) {
-//   var start = new Date().getTime();
-//   for (var i = 0; i < 1e7; i++) {
-//     if ((new Date().getTime() - start) > milliseconds){
-//       break;
-//     }
-//   }
-// }
+//USE SET INTERVAL
 
 // Function to display the next button and listen for it's click
 function nextButtonDisplay() {
   document.getElementById("next-button").style.display = "inline";
-  // Code for fun image spinning!
-  // bumperStickerImage = document.getElementById("bumper-sticker");
-  // for (k = 0; k < 18; k++) {
-  //   bumperStickerImage.style.transform = "rotate(" + k * 20 + "deg)";
-  //   sleep(1000);
-  // }
 }
 
 function nextButtonRefresh() {
@@ -161,7 +117,7 @@ document.addEventListener("keydown", function(event) {
     // check to see if 1. the guessed letter's in the character 2. the key being pressed is valid 3. the letter hasn't already been guessed correctly, which would've allowed for hacking
     if (
       lettersInCharacter[i] === event["key"] &&
-      validKeys.includes(event["key"]) &&
+      event["key"].match(/[ abcdefghijklmnopqrstuvwxyz]/gi) &&
       lettersGuessedCorrect.includes(event["key"]) === false
     ) {
       // inserting the correctly guessed letter into the DOM
@@ -173,7 +129,7 @@ document.addEventListener("keydown", function(event) {
   // Add the correctly guessed character to the array so that it can't be counted again
   if (
     lettersInCharacter.includes(event["key"]) &&
-    validKeys.includes(event["key"])
+    event["key"].match(/[ abcdefghijklmnopqrstuvwxyz]/gi)
   ) {
     lettersGuessedCorrect += event["key"];
   }
@@ -195,7 +151,7 @@ document.addEventListener("keydown", function(event) {
   if (
     lettersGuessed.includes(event["key"]) === false &&
     lettersInCharacter.includes(event["key"]) === false &&
-    validKeys.includes(event["key"])
+    event["key"].match(/[ abcdefghijklmnopqrstuvwxyz]/gi)
   ) {
     // add it to the letters guessed array
     lettersGuessed.push(event["key"]);
