@@ -90,6 +90,13 @@ function resetCharacter() {
 // Function to sleep that will be used for animating the image spin
 //USE SET INTERVAL
 
+for (i = 0; i < 18; i++) {
+  setTimeout(function() {
+    bumperSticker = document.querySelector("#bumper-sticker");
+    bumperSticker.style.transform += "rotate(" + i * 10 + "deg)";
+  }, 500);
+}
+
 // Function to display the next button and listen for it's click
 function nextButtonDisplay() {
   document.getElementById("next-button").style.display = "inline";
