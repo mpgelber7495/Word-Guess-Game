@@ -119,6 +119,14 @@ function resetCharacter() {
 }
 
 // Function to sleep that will be used for animating the image spin
+// function sleep(milliseconds) {
+//   var start = new Date().getTime();
+//   for (var i = 0; i < 1e7; i++) {
+//     if ((new Date().getTime() - start) > milliseconds){
+//       break;
+//     }
+//   }
+// }
 
 // Function to display the next button and listen for it's click
 function nextButtonDisplay() {
