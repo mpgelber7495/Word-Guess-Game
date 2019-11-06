@@ -88,13 +88,13 @@ function resetCharacter() {
 }
 
 // Function to sleep that will be used for animating the image spin
-//USE SET INTERVAL
-
-for (i = 0; i < 18; i++) {
-  setTimeout(function() {
-    bumperSticker = document.querySelector("#bumper-sticker");
-    bumperSticker.style.transform += "rotate(" + i * 10 + "deg)";
-  }, 500);
+function spinBumperSticker() {
+  for (i = 0; i < 18; i++) {
+    setTimeout(function() {
+      bumperSticker = document.querySelector("#bumper-sticker");
+      bumperSticker.style.transform += "rotate(" + i * 10 + "deg)";
+    }, 500);
+  }
 }
 
 // Function to display the next button and listen for it's click
@@ -150,6 +150,7 @@ document.addEventListener("keydown", function(event) {
       randomCharacter.link +
       '" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe> </div></div>';
     document.getElementById("spotify-holder").innerHTML += songIframe;
+
     nextButtonDisplay();
     // display the new wins value
     document.getElementById("wins").innerHTML = wins;
