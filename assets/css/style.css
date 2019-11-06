@@ -32,6 +32,9 @@ h1.heading-text {
   padding-top: 4px;
   border: 2px dotted aquamarine;
 }
+.highlight {
+  font-weight: 900;
+}
 .score-board-heading {
   font-size: 40px;
   color: aliceblue;

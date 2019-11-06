@@ -144,6 +144,7 @@ function nextButtonRefresh() {
   lettersInCharacter = instant[5];
   lettersGuessedCorrectCount = instant[6];
   document.getElementById("next-button").style.display = "none";
+  document.querySelector(".highlight").style.fontSize = "15px";
   resetCharacter();
 }
 
@@ -213,4 +214,12 @@ document.addEventListener("keydown", function(event) {
       }
     }
   }
+  spaceBarWarning();
 });
+
+// Warning for if guesses are low and space bar hasn't been guessed
+function spaceBarWarning() {
+  if (remainingGuesses < 3 && lettersGuessed.includes(" ") === false) {
+    document.querySelector(".highlight").style.fontSize = "30px";
+  }
+}
