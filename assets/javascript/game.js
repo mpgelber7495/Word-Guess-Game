@@ -1,5 +1,5 @@
 // JSON structure for the data below
-characters = [
+var characters = [
   {
     name: "Red Balloons",
     artist: "Gold Finger",
@@ -37,6 +37,36 @@ characters = [
   }
 ];
 // End data
+
+var validKeys = [
+  "q",
+  "w",
+  "e",
+  "r",
+  "t",
+  "y",
+  "u",
+  "i",
+  "o",
+  "p",
+  "a",
+  "s",
+  "d",
+  "f",
+  "g",
+  "h",
+  "j",
+  "k",
+  "l",
+  "z",
+  "x",
+  "c",
+  "v",
+  "b",
+  "n",
+  "m",
+  " "
+];
 
 // create variables
 var wins = 0;
@@ -124,7 +154,7 @@ document.addEventListener("keydown", function(event) {
     // check to see if 1. the guessed letter's in the character 2. the key being pressed is valid 3. the letter hasn't already been guessed correctly, which would've allowed for hacking
     if (
       lettersInCharacter[i] === event["key"] &&
-      event["key"].match(/[ abcdefghijklmnopqrstuvwxyz]/gi) &&
+      validKeys.includes(event["key"]) &&
       lettersGuessedCorrect.includes(event["key"]) === false
     ) {
       // inserting the correctly guessed letter into the DOM
@@ -136,7 +166,7 @@ document.addEventListener("keydown", function(event) {
   // Add the correctly guessed character to the array so that it can't be counted again
   if (
     lettersInCharacter.includes(event["key"]) &&
-    event["key"].match(/[ abcdefghijklmnopqrstuvwxyz]/gi)
+    validKeys.includes(event["key"])
   ) {
     lettersGuessedCorrect += event["key"];
   }
@@ -159,7 +189,7 @@ document.addEventListener("keydown", function(event) {
   if (
     lettersGuessed.includes(event["key"]) === false &&
     lettersInCharacter.includes(event["key"]) === false &&
-    event["key"].match(/[ abcdefghijklmnopqrstuvwxyz]/gi)
+    validKeys.includes(event["key"])
   ) {
     // add it to the letters guessed array
     lettersGuessed.push(event["key"]);
