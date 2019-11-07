@@ -164,6 +164,7 @@ spinBumperSticker(0);
 
 // Event listener to pickup when a key is pressed (and therefore a guess is being made)
 document.addEventListener("keydown", function(event) {
+  debugger;
   if (
     remainingGuesses > 0 &&
     lettersGuessedCorrectCount !== lettersInCharacter.length
@@ -187,7 +188,7 @@ document.addEventListener("keydown", function(event) {
       lettersInCharacter.includes(event["key"]) &&
       validKeys.includes(event["key"])
     ) {
-      lettersGuessedCorrect += event["key"];
+      lettersGuessedCorrect.push(event["key"]);
     }
     // check to see if the song has been fully guessed correctly by comparing the length of character to the number of letters correctly guessed
     if (lettersGuessedCorrectCount === lettersInCharacter.length) {
@@ -235,7 +236,11 @@ document.addEventListener("keydown", function(event) {
 // Warning for if guesses are low and space bar hasn't been guessed
 // Currently a bug because the " " isn't stored in the lettersGuessed array even though the event properly logs it
 function spaceBarWarning() {
-  if (remainingGuesses < 3 && lettersGuessed.includes(" ") === false) {
+  if (
+    remainingGuesses < 3 &&
+    !lettersGuessed.includes(" ") &&
+    !lettersGuessedCorrect.includes(" ")
+  ) {
     document.querySelector(".highlight").style.fontSize = "30px";
   }
 }
