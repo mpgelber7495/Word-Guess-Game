@@ -120,14 +120,16 @@ function resetCharacter() {
 }
 
 // Function to sleep that will be used for animating the image spin
-function spinBumperSticker() {
-  for (i = 0; i < 18; i++) {
-    setTimeout(function() {
-      bumperSticker = document.querySelector("#bumper-sticker");
-      bumperSticker.style.transform += "rotate(" + i * 10 + "deg)";
-    }, 500);
+
+function spinBumperSticker(counter) {
+  if (counter === 73) {
+    return;
   }
+  bumperSticker = document.querySelector("#bumper-sticker");
+  bumperSticker.style.transform = "rotate(" + counter * 10 + "deg)";
+  setTimeout(spinBumperSticker, 10, ++counter);
 }
+spinBumperSticker(0);
 
 // Function to display the next button and listen for it's click
 function nextButtonDisplay() {
@@ -189,6 +191,7 @@ document.addEventListener("keydown", function(event) {
       document.getElementById("spotify-holder").innerHTML += songIframe;
 
       nextButtonDisplay();
+      spinBumperSticker(0);
       // display the new wins value
       document.getElementById("wins").innerHTML = wins;
     }
@@ -218,6 +221,7 @@ document.addEventListener("keydown", function(event) {
 });
 
 // Warning for if guesses are low and space bar hasn't been guessed
+// Currently a bug because the " " isn't stored in the lettersGuessed array even though the event properly logs it
 function spaceBarWarning() {
   if (remainingGuesses < 3 && lettersGuessed.includes(" ") === false) {
     document.querySelector(".highlight").style.fontSize = "30px";
