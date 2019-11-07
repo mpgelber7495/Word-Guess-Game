@@ -92,19 +92,7 @@ function instantiateVariables() {
   ];
 }
 
-// run the instantiation function and assign the variable
-var instant = instantiateVariables();
-var remainingGuesses = instant[0];
-var lettersGuessed = instant[1];
-var lettersGuessedCorrect = instant[2];
-var randomCharacter = instant[3];
-var randomCharacterName = instant[4];
-var lettersInCharacter = instant[5];
-var lettersGuessedCorrectCount = instant[6];
-
-// Refresh the remaining guesses value on the DOM
-
-// Function to insert a correctly guessed letter into the DOM
+// Function to reset the array of underscores, remainingGuesses and lettersGuessed
 function resetCharacter() {
   document.getElementById("guessing-holder").innerHTML = "";
   for (i = 0; i < lettersInCharacter.length; i++) {
@@ -115,12 +103,10 @@ function resetCharacter() {
       "'>_</span>";
   }
   document.getElementById("remaining-guesses").innerHTML = remainingGuesses;
-  document.getElementById("remaining-guesses").innerHTML = remainingGuesses;
   document.getElementById("letters-guessed").innerHTML = lettersGuessed;
 }
 
-// Function to sleep that will be used for animating the image spin
-
+// Function to spin the bumperSticker object
 function spinBumperSticker(counter) {
   if (counter === 73) {
     return;
@@ -129,13 +115,13 @@ function spinBumperSticker(counter) {
   bumperSticker.style.transform = "rotate(" + counter * 10 + "deg)";
   setTimeout(spinBumperSticker, 10, ++counter);
 }
-spinBumperSticker(0);
 
-// Function to display the next button and listen for it's click
+// Function to display the next button
 function nextButtonDisplay() {
   document.getElementById("next-button").style.display = "inline";
 }
 
+// Call the instantiateVariables function and assign the returned array to variables, also reset the DOM elements
 function nextButtonRefresh() {
   instant = instantiateVariables();
   remainingGuesses = instant[0];
@@ -147,11 +133,14 @@ function nextButtonRefresh() {
   lettersGuessedCorrectCount = instant[6];
   document.getElementById("next-button").style.display = "none";
   document.querySelector(".highlight").style.fontSize = "15px";
+  document.querySelector(".hint-holder").innerHTML = "";
   resetCharacter();
 }
 
-// First reset function to start off the game
+// Preliminary run of functions
+nextButtonRefresh();
 resetCharacter();
+spinBumperSticker(0);
 
 // Event listener to pickup when a key is pressed (and therefore a guess is being made)
 document.addEventListener("keydown", function(event) {
@@ -166,13 +155,14 @@ document.addEventListener("keydown", function(event) {
         validKeys.includes(event["key"]) &&
         lettersGuessedCorrect.includes(event["key"]) === false
       ) {
+        // if above met, correct guess was made
         // inserting the correctly guessed letter into the DOM
         var elementID = "letter-" + i;
         document.getElementById(elementID).innerHTML = event["key"];
         lettersGuessedCorrectCount++;
       }
     }
-    // Add the correctly guessed character to the array so that it can't be counted again
+    // Add the correctly guessed character to the array so that it can't be counted again (this has to be outside of the For loop so that double letters are identified)
     if (
       lettersInCharacter.includes(event["key"]) &&
       validKeys.includes(event["key"])
@@ -182,7 +172,6 @@ document.addEventListener("keydown", function(event) {
     // check to see if the song has been fully guessed correctly by comparing the length of character to the number of letters correctly guessed
     if (lettersGuessedCorrectCount === lettersInCharacter.length) {
       wins++;
-
       // code to embed spotify iframe
       songIframe =
         '<div class="row"><div class="col-12 d-flex justify-content-center py-2"><iframe src="' +
@@ -192,14 +181,13 @@ document.addEventListener("keydown", function(event) {
       var newInnerHTML =
         songIframe + document.getElementById("spotify-holder").innerHTML;
       document.getElementById("spotify-holder").innerHTML = newInnerHTML;
-
       nextButtonDisplay();
       spinBumperSticker(0);
       // display the new wins value
       document.getElementById("wins").innerHTML = wins;
     }
 
-    // If a letter is guessed incorrect
+    // If a letter is guessed incorrectly
     if (
       lettersGuessed.includes(event["key"]) === false &&
       lettersInCharacter.includes(event["key"]) === false &&
@@ -221,6 +209,7 @@ document.addEventListener("keydown", function(event) {
     }
   }
   spaceBarWarning();
+  displayArtistHint();
 });
 
 // Warning for if guesses are low and space bar hasn't been guessed
@@ -228,5 +217,13 @@ document.addEventListener("keydown", function(event) {
 function spaceBarWarning() {
   if (remainingGuesses < 3 && lettersGuessed.includes(" ") === false) {
     document.querySelector(".highlight").style.fontSize = "30px";
+  }
+}
+
+// Display the artist as a hint
+function displayArtistHint() {
+  if (remainingGuesses < 4) {
+    document.querySelector(".hint-holder").innerHTML =
+      "<h4> Hint<br>Artist is: " + randomCharacter.artist + "</h4>";
   }
 }
