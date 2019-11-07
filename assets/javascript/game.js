@@ -188,7 +188,10 @@ document.addEventListener("keydown", function(event) {
         '<div class="row"><div class="col-12 d-flex justify-content-center py-2"><iframe src="' +
         randomCharacter.link +
         '" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe> </div></div>';
-      document.getElementById("spotify-holder").innerHTML += songIframe;
+
+      var newInnerHTML =
+        songIframe + document.getElementById("spotify-holder").innerHTML;
+      document.getElementById("spotify-holder").innerHTML = newInnerHTML;
 
       nextButtonDisplay();
       spinBumperSticker(0);
