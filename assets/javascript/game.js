@@ -1,35 +1,35 @@
 // JSON structure for the data below
 var characters = [
-  // {
-  //   name: "Red Balloons",
-  //   artist: "Gold Finger",
-  //   link: "https://open.spotify.com/embed/track/0rOTMSSa6yscfOrGnzfheM"
-  // },
-  // {
-  //   name: "My Own Worst Enemy",
-  //   artist: "Lit",
-  //   link: "https://open.spotify.com/embed/track/33iv3wnGMrrDugd7GBso1z"
-  // },
-  // {
-  //   name: "Mr Brightside",
-  //   artist: "The Killers",
-  //   link: "https://open.spotify.com/embed/track/7oK9VyNzrYvRFo7nQEYkWN"
-  // },
-  // {
-  //   name: "All The Small Things",
-  //   artist: "Blink 182",
-  //   link: "https://open.spotify.com/embed/track/2m1hi0nfMR9vdGC8UcrnwU"
-  // },
-  // {
-  //   name: "Basket Case",
-  //   artist: "Green Day",
-  //   link: "https://open.spotify.com/embed/track/6L89mwZXSOwYl76YXfX13s"
-  // },
-  // {
-  //   name: "American Girl",
-  //   artist: "Tom Petty",
-  //   link: "https://open.spotify.com/embed/track/7MRyJPksH3G2cXHN8UKYzP"
-  // },
+  {
+    name: "Red Balloons",
+    artist: "Gold Finger",
+    link: "https://open.spotify.com/embed/track/0rOTMSSa6yscfOrGnzfheM"
+  },
+  {
+    name: "My Own Worst Enemy",
+    artist: "Lit",
+    link: "https://open.spotify.com/embed/track/33iv3wnGMrrDugd7GBso1z"
+  },
+  {
+    name: "Mr Brightside",
+    artist: "The Killers",
+    link: "https://open.spotify.com/embed/track/7oK9VyNzrYvRFo7nQEYkWN"
+  },
+  {
+    name: "All The Small Things",
+    artist: "Blink 182",
+    link: "https://open.spotify.com/embed/track/2m1hi0nfMR9vdGC8UcrnwU"
+  },
+  {
+    name: "Basket Case",
+    artist: "Green Day",
+    link: "https://open.spotify.com/embed/track/6L89mwZXSOwYl76YXfX13s"
+  },
+  {
+    name: "American Girl",
+    artist: "Tom Petty",
+    link: "https://open.spotify.com/embed/track/7MRyJPksH3G2cXHN8UKYzP"
+  },
   {
     name: "The Middle",
     artist: "Jimmy Eat World",
