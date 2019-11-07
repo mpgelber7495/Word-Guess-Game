@@ -34,6 +34,26 @@ var characters = [
     name: "The Middle",
     artist: "Jimmy Eat World",
     link: "https://open.spotify.com/embed/track/3mcG2NI5G5vhrQtRda1YnA"
+  },
+  {
+    name: "Stacys Mom",
+    artist: "Fountains of Youth",
+    link: "https://open.spotify.com/embed/track/27L8sESb3KR79asDUBu8nW"
+  },
+  {
+    name: "The Anthem",
+    artist: "Good Charlotte",
+    link: "https://open.spotify.com/embed/track/0BRHnOFm6sjxN1i9LJrUDu"
+  },
+  {
+    name: "SemiCharmed Life",
+    artist: "Third Eye Blind",
+    link: "https://open.spotify.com/embed/track/42et6fnHCw1HIPSrdPprMl"
+  },
+  {
+    name: "September",
+    artist: "Earth, Wind and Fire",
+    link: "https://open.spotify.com/embed/track/7Cuk8jsPPoNYQWXK9XRFvG"
   }
 ];
 // End data
