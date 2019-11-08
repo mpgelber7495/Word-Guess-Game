@@ -217,7 +217,9 @@ document.addEventListener("keydown", function(event) {
       // add it to the letters guessed array
       lettersGuessed.push(event["key"]);
       // Display this in the DOM
-      document.getElementById("letters-guessed").innerHTML = lettersGuessed;
+      document.getElementById(
+        "letters-guessed"
+      ).innerHTML = lettersGuessed.join(" ");
       // Decrease remaining guesses
       remainingGuesses--;
       document.getElementById("remaining-guesses").innerHTML = remainingGuesses;
